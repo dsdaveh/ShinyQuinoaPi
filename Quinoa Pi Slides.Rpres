@@ -1,0 +1,67 @@
+Quinoa Pi: Explaining the Monte Carlo Method
+========================================================
+author: Dave Hurst
+date: 18-Sep-2014
+transition: rotate
+
+What is Monte Carlo Analysis
+========================================================
+
+- a statistical method of analysis
+- Wikipedia has [an exhaustive description](http://en.wikipedia.org/wiki/Monte_Carlo_method) 
+- A simple example is calculating pi based on the random throwing of objects
+- [Quinoa Pi](https://dsdaveh.shinyapps.io/QuinoaPi/) is an app built to help visualize this
+
+
+Using the Quinoa Pi app
+========================================================
+left: 40%
+![Control Settings](QuinoaPiControls.JPG)
+![Results of a single throw](QuinoaPiThrow.JPG)
+***
+- Settings control how many grains are thrown
+- Dots represent the grains thrown
+
+![Equation](QuinoaPiEquation1.PNG)
+
+Multiple throws improve the estimate
+========================================================
+![Histogram](QuinoaPiHist.JPG)
+***
+- Red Line represents the estimate (average estimated value for all throws)
+- Black (dashed) Line is the true value of $pi$
+
+Use the app to study convergence
+========================================================
+left: 60%
+- Which converges to $pi$ faster?  
+-- 100 throws of 1,000 grains; or  
+-- 1 throw of 10,000 grains  
+
+***
+``` {r , echo=FALSE}
+n.throws <- 100
+input <- data.frame(nq <- 1000)
+throw.history <- numeric()
+pi.est.moving <- numeric()
+set.seed(1999)
+
+for( throw in 1:n.throws) {
+     
+     x <- runif( input$nq )
+     y <- runif( input$nq )
+     
+     r <- sqrt((x - .5)^2 +(y - .5)^2)
+     nq.in <- r <= .5
+     colr <- ifelse( nq.in, "red", "blue") #not used
+     
+     pi.est <- 4 * sum(nq.in) / input$nq
+     
+     throw.history <- c(throw.history, pi.est)
+     pi.est.moving <- c(pi.est.moving, sum(throw.history)/throw)
+}
+
+plot(throw.history, xlab="Throw (of 1000 grains)", ylab=expression(pi[estimated]))
+lines(pi.est.moving)
+lines(x=c(0,n.throws), y=c(pi,pi),col="black",lty=2)
+```
