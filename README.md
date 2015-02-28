@@ -5,9 +5,9 @@ This is a simple example created in R demonstrating RStudio's *shiny* applicatio
 
 This example discusses Monte Carlo analysis as a means for estimating pi using random distributions, but is really intended as a means to show how easily and effectively visualizations can be created using R and R-Studio.
 
-A [presentation reviewing the shiny app is available here](https://rpubs.com/dsdaveh/29187)
-The [app itself is available here](https://dsdaveh.shinyapps.io/QuinoaPi/)
-All the code used to create the app is available on [github](https://github.com/dsdaveh/ShinyQuinoaPi)
+- A [presentation reviewing the shiny app is available here](https://rpubs.com/dsdaveh/29187)  
+- The [app itself is available here](https://dsdaveh.shinyapps.io/QuinoaPi/)  
+- All the code used to create the app is available on [github](https://github.com/dsdaveh/ShinyQuinoaPi)  
 
 Enjoy! Feedback is welcomed at  
 https://www.linkedin.com/in/davehurst
